@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
-	public float speed;
+    public GameObject PlayerBulletGO;
+    public GameObject bulletPosition01;
+    public GameObject bulletPosition02;
+    public float fireRate;
+    private float lastFire = 0;
+
+
+
+    public float speed;
 	// Use this for initialization
 	void Start () {
 		
@@ -12,6 +20,19 @@ public class PlayerControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //fire bullet when z is pressed
+        if (Input.GetButton("Fire1") && Time.time > lastFire)
+        {
+            lastFire = Time.time + fireRate;
+            //instantiate first bullet
+            GameObject bullet01 = (GameObject)Instantiate(PlayerBulletGO);
+            bullet01.transform.position = bulletPosition01.transform.position;
+            //instantiate second bullet
+            GameObject bullet02 = (GameObject)Instantiate(PlayerBulletGO);
+            bullet02.transform.position = bulletPosition02.transform.position;
+        }
+
+
 		float x = Input.GetAxisRaw ("Horizontal");
 		float y = Input.GetAxisRaw ("Vertical");
 
