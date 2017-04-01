@@ -7,7 +7,7 @@ public class PlayerBullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        speed = 45f;	
+        speed = 40f;	
 	}
 	
 	// Update is called once per frame
@@ -22,4 +22,12 @@ public class PlayerBullet : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Detect collision of the player with an enemy ship or enemy bullet
+        if (collision.tag == "EnemyShipTag")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

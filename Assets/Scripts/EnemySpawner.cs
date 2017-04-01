@@ -6,10 +6,12 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject EnemyGO;
 
     public float maxSpawnRateInSeconds;
-	// Use this for initialization
-	void Start () {
+    public float spawnDuration;
+    // Use this for initialization
+    void Start () {
         Invoke("SpawnEnemy", maxSpawnRateInSeconds);
         InvokeRepeating("IncreaseSpawnRate", 0f, 30f);
+        spawnDuration += Time.time;   
 	}
 	
 	// Update is called once per frame
@@ -21,7 +23,7 @@ public class EnemySpawner : MonoBehaviour {
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
         GameObject anEnemy = (GameObject)Instantiate(EnemyGO);
-        anEnemy.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+        anEnemy.transform.position = new Vector2(Random.Range(min.x*0.9f, max.x * 0.9f), max.y);
         ScheduleNextEnemySpawn();
     }
 
@@ -30,13 +32,16 @@ public class EnemySpawner : MonoBehaviour {
         float spawninNSeconds;
         if(maxSpawnRateInSeconds > 1f)
         {
-            spawninNSeconds = Random.RandomRange(1f, maxSpawnRateInSeconds);
+            spawninNSeconds = Random.Range(1f, maxSpawnRateInSeconds);
         }
         else
         {
             spawninNSeconds = 1f;
         }
-        Invoke("SpawnEnemy", spawninNSeconds);
+        if (Time.time < spawnDuration)
+        {
+            Invoke("SpawnEnemy", spawninNSeconds);
+        }
     }
     //increases difficulty
     void IncreaseSpawnRate()
