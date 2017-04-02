@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour {
         spawnDuration += Time.time;   
 	}
 	
-	// Update is called once per frame
+	// Update is called moveToPoint per frame
 	void Update () {
         
     }

@@ -10,7 +10,7 @@ public class PlayerBullet : MonoBehaviour {
         speed = 40f;	
 	}
 	
-	// Update is called once per frame
+	// Update is called moveToPoint per frame
 	void Update () {
         Vector2 position = transform.position;
         position = new Vector2(position.x, position.y + speed * Time.deltaTime);
@@ -25,7 +25,7 @@ public class PlayerBullet : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision)
     {
         //Detect collision of the player with an enemy ship or enemy bullet
-        if (collision.tag == "EnemyShipTag")
+        if (collision.tag == "EnemyShipTag" || collision.tag == "CirnoTag")
         {
             Destroy(gameObject);
         }

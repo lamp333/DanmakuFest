@@ -21,7 +21,7 @@ public class EnemyGun : MonoBehaviour {
         numFired = 0;		
 	}
 	
-	// Update is called once per frame
+	// Update is called moveToPoint per frame
 	void Update () {
 		
 	}

@@ -30,7 +30,7 @@ public class EnemyBullet : MonoBehaviour {
         isReady = true;
     }
 	
-	// Update is called once per frame
+	// Update is called moveToPoint per frame
 	void Update () {
         if (isReady)
         {

@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
+	// Update is called moveToPoint per frame
 	void Update () {
         checkDir();
         Vector2 position = transform.position;

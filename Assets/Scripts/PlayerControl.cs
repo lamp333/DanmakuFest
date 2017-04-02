@@ -81,7 +81,8 @@ public class PlayerControl : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision)
     {
         //Detect collision of the player with an enemy ship or enemy bullet
-        if ((collision.tag == "EnemyShipTag")|| (collision.tag == "EnemyBulletTag"))
+        if ((collision.tag == "EnemyShipTag")|| (collision.tag == "EnemyBulletTag")
+            || (collision.tag == "CirnoTag"))
         {
             PlayExplosion();
             //comment out for testing
